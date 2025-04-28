@@ -160,7 +160,7 @@ namespace XeniaManager.DesktopApp
         private static void CheckLaunchArguments(string[] arguments)
         {
             // Check if there are launch arguments and if there are games in Xenia Manager
-            if (arguments.Length < 1 || GameManager.Games.Count == 0)
+            if (arguments.Length == 0 || GameManager.Games.Count == 0)
             {
                 return;
             }
@@ -184,6 +184,10 @@ namespace XeniaManager.DesktopApp
                         };
                         mainWindow.Show();
                         Application.Current.Shutdown();
+                    }
+                    else
+                    {
+                        Log.Error($"Couldn't find game with title '{argument}'");
                     }
                 }
             }
